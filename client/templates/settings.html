@@ -1,0 +1,12 @@
+<template name="settings">
+    <h3>Username: </h3>
+    {{#if usernameChange}}
+        <div class="form-group">
+              <input type="text" class="form-control username-input" value="{{currentUsername}}">
+        </div>
+    {{else}}
+        {{currentUsername}}<a href="#" title="Change your user name" class="btn btn-link btn-lg username"><span class="glyphicon glyphicon-edit"></span></a>
+    {{/if}}
+
+
+</template>

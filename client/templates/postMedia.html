@@ -1,0 +1,25 @@
+<template name="postMedia">
+{{#if isImage}}
+<a class="thumbnail" data-type="image">
+    <img src="{{getUrl}}" alt="...">
+</a>
+{{/if}}
+{{#if isVideo}}
+    {{#if getUrl}}
+        <video controls preload="auto">
+            <source src="{{getUrl}}" type='video/webm' />
+        </video>
+    {{else}}
+        Video is loading...
+    {{/if}}
+{{/if}}
+{{#if isAudio}}
+    {{#if getUrl}}
+        <audio controls preload="auto">
+            <source src="{{getUrl}}" />
+        </audio>
+    {{else}}
+        Audio is loading...
+    {{/if}}
+{{/if}}
+</template>

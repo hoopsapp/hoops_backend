@@ -1,0 +1,25 @@
+<template name="rehash">
+   <div class="modal modal-rehash fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {{#autoForm schema=rehashSchema id="rehashForm" type="method" meteormethod="rehash"}}
+                <div class="modal-header">
+                    <h3>Rehash this post to other hashtags</h3>
+                </div>
+                <div class="modal-body">
+                    {{#with currentRehashPost}}
+                    {{> hashtagInput}}
+                    {{> afQuickField class="post-text emoji" name="text" placeholder="Type your post..." rows="4" value=text}}
+                    {{> postMedia}}
+                    {{> afFieldInput name="postId" type="hidden" value=_id}}
+                    {{/with}}
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Rehash</button>
+                    <input class="btn btn-default" type="button" value="Close" data-dismiss="modal">
+                </div>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>

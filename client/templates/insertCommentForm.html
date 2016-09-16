@@ -1,0 +1,51 @@
+<template name="insertCommentForm">
+    {{#autoForm collection="Hoops.Comments" id="insertCommentForm" type="insert" fields="text"}}
+    <div class="modal-body">
+        {{#if commentsReady}}
+        <ul class="list-group">
+        {{#if hasMoreComments}}
+        <a class="list-group-item previous-comments text-center">
+            <span class="glyphicon glyphicon-refresh {{#if loading}}loading{{/if}}"></span>&nbsp;Show older comments
+        </a>
+        {{/if}}
+        {{#each comments}}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <span class="text-info">{{user.username}}</span>
+                    </div>
+                    <div class="col-xs-6">
+                        <span class="pull-right text-muted">{{fromNow createdAt}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                         {{text}}
+                    </div>
+                    <div class="col-sm-12">
+                        <a class="btn btn-link pull-left comment-flag  {{#if isFlagged}}flagged{{/if}}" href="#" title="{{#if isFlagged}}Remove report{{else}}Report as unappropriate{{/if}}">
+                            <span class="glyphicon glyphicon-flag"></span>
+                        </a>
+                        <a class="btn btn-link pull-left comment-like {{#if isLiked}}liked{{/if}}" href="#">
+                            <span class="glyphicon glyphicon-thumbs-up"></span>{{#if likeCount}}&nbsp;{{likeCount}}{{/if}}
+                        </a>
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+        </ul>
+        {{else}}
+        {{> spinner}}
+        {{/if}}
+         {{> afFieldInput name='post' type='hidden' value=currentPost._id}}
+        <fieldset>
+            <legend>Write a new comment:</legend>
+            {{> afQuickField name='text'}}
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <input class="btn btn-default back" type="button" value="Close" data-dismiss="modal">
+    </div>
+    {{/autoForm}}
+</template>

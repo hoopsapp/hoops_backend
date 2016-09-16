@@ -1,0 +1,51 @@
+<template name="posts">
+    {{#unless postsReady}}
+    {{> spinner}}
+    {{/unless}}
+    <ul class="list-group">
+    {{#each posts}}
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-8">
+                    <span class="text-info">{{user.username}}</span>:
+                    {{#unless ../currentHashTag}}{{#with hashtagObject}}@ <a href="{{pathFor 'hashtagShow'}}">#{{title}}</a>{{/with}}{{/unless}}
+                </div>
+                <div class="col-xs-4">
+                    <span class="pull-right text-muted">
+                        {{fromNow createdAt}}
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="emoji post-text-display">{{{text}}}</div>
+                    {{> postMedia}}
+                </div>
+            </div>
+            <div class="row">
+                 <div class="col-sm-12">
+                     <a class="btn btn-link pull-left post-comments" href="#">
+                        <span class="glyphicon glyphicon-comment"></span>{{#if commentCount}}&nbsp;{{commentCount}}{{/if}}
+                    </a>
+                    <a class="btn btn-link pull-left post-like {{#if isLiked}}liked{{/if}}" href="#">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>{{#if likeCount}}&nbsp;{{likeCount}}{{/if}}
+                    </a>
+                    <a class="btn btn-link pull-left post-flag  {{#if isFlagged}}flagged{{/if}}" href="#" title="{{#if isFlagged}}Remove report{{else}}Report as unappropriate{{/if}}">
+                        <span class="glyphicon glyphicon-flag"></span>
+                    </a>
+                    <a class="btn btn-link pull-left post-rehash" href="#">
+                        <span class="glyphicon glyphicon-retweet"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    {{else}}
+        No posts found.
+    {{/each}}
+    {{#if hasMorePosts}}
+    <a class="list-group-item previous-posts text-center">
+        <span class="glyphicon glyphicon-refresh {{#if loading}}loading{{/if}}"></span>&nbsp;Show older posts
+    </a>
+    {{/if}}
+    </ul>
+</template>

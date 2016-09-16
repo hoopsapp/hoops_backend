@@ -1,0 +1,17 @@
+<template name="hashtagList">
+    <div class="list-group">
+    {{#each hashtags}}
+        <a class="list-group-item" href="{{pathFor 'hashtagShow'}}">#{{title}}
+            <button type="button" class="btn btn-default pull-right hashtag-follow {{#if isFollowed}}active{{/if}}" data-toggle="button">
+                <img src="/rehoops.png">
+            </button>
+        <span class="clearfix"></span>
+        </a>
+    {{else}}
+        No hashtags found.
+    {{/each}}
+    </div>
+    {{#unless hashtagsReady}}
+    {{> spinner}}
+    {{/unless}}
+</template>

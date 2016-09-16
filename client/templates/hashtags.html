@@ -1,0 +1,15 @@
+<template name="hashtags">
+    <ul class="nav nav-pills" role="tablist">
+        <li class="{{ isActiveRoute 'followed' }}"><a href="{{pathFor 'followed'}}" role="tab">Followed</a></li>
+        <li class="{{ isActiveRoute 'nearest' }}"><a href="{{pathFor 'nearest'}}" role="tab">Nearby</a></li>
+        <li class="{{ isActiveRoute 'hottest' }}"><a href="{{pathFor 'hottest'}}" role="tab">Hottest</a></li>
+    </ul>
+
+    <p></p>
+    <div class="tab-content">
+        <div class="tab-pane active">
+            {{> hashtagList}}
+        </div>
+    </div>
+
+</template>

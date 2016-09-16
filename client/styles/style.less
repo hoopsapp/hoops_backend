@@ -1,0 +1,161 @@
+@import "/packages/less-bootstrap-3/lib/less/bootstrap.import.less";
+@import "typeahead.import.less";
+
+
+@font-face {
+  font-family: 'OpenSansEmoji-Regular';
+  src: url('fonts/OpenSansEmoji-Regular.eot?#iefix') format('embedded-opentype'),
+       url('fonts/OpenSansEmoji-Regular.woff') format('woff'),
+       url('fonts/OpenSansEmoji-Regular.ttf')  format('truetype'),
+       url('fonts/OpenSansEmoji-Regular.svg#OpenSansEmoji-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* variables */
+@link-color : @gray-light;
+
+/* fixed navbar */
+body { padding-top: 70px; }
+
+@navbar-default-color: #fff;
+@navbar-default-link-color: #fff;
+.navbar {
+    background-color: #ef5b4f;
+    i {
+        cursor: pointer;
+    }
+
+    .navbar-form {
+
+        border: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+
+        .has-feedback .form-control-feedback {
+            top: 0;
+        }
+    }
+}
+
+.navbar-inner {
+    h3 {
+        float: none;
+    }
+
+    span.pull-right {
+        margin-left: 15px;
+    }
+
+    span.text {
+        margin-right: -15px;
+    }
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+@sticky-footer-height: 66px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: @sticky-footer-height;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: @sticky-footer-height;
+  background-color: #242529;
+
+    .form-group {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* connection icon */
+
+    span.status {
+
+        margin-top: 15px;
+        font-size: @font-size-h4;
+
+        &.connected {
+            color: @brand-success;
+        }
+
+        &.connecting {
+            color: @brand-primary;
+        }
+
+        &.failed, &.waiting {
+            color: @brand-danger;
+        }
+    }
+}
+
+/* other styles */
+.flagged, .flagged:hover {
+    color: @brand-danger;
+}
+
+.liked, .liked:hover {
+    color: @brand-success;
+}
+
+video, audio {
+    max-width: 100%;
+}
+
+.emoji {
+    font-family: 'OpenSansEmoji-Regular';
+}
+
+.post-text {
+    min-height: 34px;
+    height: auto;
+}
+
+.post-text-display {
+    white-space:pre-wrap;
+    word-break: break-all;
+}
+
+
+/* rotation animation */
+
+.mixi-frames () {
+  from {
+    .rotate(0deg);
+  }
+  to {
+    .rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate {.mixi-frames;}
+@-moz-keyframes rotate {.mixi-frames;}
+@-ms-keyframes rotate {.mixi-frames;}
+@-o-keyframes rotate {.mixi-frames;}
+@keyframes rotate {.mixi-frames;}
+
+.glyphicon-refresh.loading,
+.footer span.status.connecting
+{
+    .animation-name(rotate);
+    .animation-duration(0.5s);
+    .animation-iteration-count(infinite);
+    .animation-timing-function(linear);
+}
+
+/* pills */
+@nav-pills-border-radius: 0;
+@nav-pills-active-link-hover-bg: lighten(#000, 76.7%);

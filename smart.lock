@@ -1,0 +1,24 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "less-bootstrap-3": {},
+      "hoops-package": {
+        "git": "git@54.76.147.204:repositories/hoop-package.git",
+        "branch": "master"
+      }
+    },
+    "packages": {
+      "less-bootstrap-3": {
+        "git": "https://github.com/DerMambo/less-bootstrap-3.git",
+        "tag": "v0.0.2",
+        "commit": "b5010b2ff9e9ae6b0e6e13eb0f6c81c9cb84373e"
+      },
+      "hoops-package": {
+        "git": "git@54.76.147.204:repositories/hoop-package.git",
+        "branch": "master",
+        "commit": "312beec6facc0dfc195b854b3d3d47b4db5a901f"
+      }
+    }
+  }
+}
